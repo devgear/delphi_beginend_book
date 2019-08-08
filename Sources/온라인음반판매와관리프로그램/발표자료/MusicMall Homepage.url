@@ -1,0 +1,9 @@
+[DEFAULT]
+BASEURL=http://127.0.0.1:8888/
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2
+[InternetShortcut]
+URL=http://127.0.0.1:8888/
+IDList=
+IconFile=http://127.0.0.1:8888/favicon.ico
+IconIndex=1

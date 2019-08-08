@@ -1,0 +1,60 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{7B58FB08-F73C-4A1D-A5F4-E0E4C15A1D4A}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="MusicMallServer.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="MusicMallClient.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="MusicMallWeb.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="MusicMallServer">
+			<MSBuild Projects="MusicMallServer.dproj"/>
+		</Target>
+		<Target Name="MusicMallServer:Clean">
+			<MSBuild Projects="MusicMallServer.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="MusicMallServer:Make">
+			<MSBuild Projects="MusicMallServer.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="MusicMallClient">
+			<MSBuild Projects="MusicMallClient.dproj"/>
+		</Target>
+		<Target Name="MusicMallClient:Clean">
+			<MSBuild Projects="MusicMallClient.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="MusicMallClient:Make">
+			<MSBuild Projects="MusicMallClient.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="MusicMallWeb">
+			<MSBuild Projects="MusicMallWeb.dproj"/>
+		</Target>
+		<Target Name="MusicMallWeb:Clean">
+			<MSBuild Projects="MusicMallWeb.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="MusicMallWeb:Make">
+			<MSBuild Projects="MusicMallWeb.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="MusicMallServer;MusicMallClient;MusicMallWeb"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="MusicMallServer:Clean;MusicMallClient:Clean;MusicMallWeb:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="MusicMallServer:Make;MusicMallClient:Make;MusicMallWeb:Make"/>
+		</Target>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
+	</Project>

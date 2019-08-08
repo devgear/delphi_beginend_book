@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{34DE5DC6-4364-4875-BCFC-88454EEDF9BD}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="AutoUpgrade.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Server\AutoUpgradeServer.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="AutoUpgrade">
+			<MSBuild Projects="AutoUpgrade.dproj"/>
+		</Target>
+		<Target Name="AutoUpgrade:Clean">
+			<MSBuild Targets="Clean" Projects="AutoUpgrade.dproj"/>
+		</Target>
+		<Target Name="AutoUpgrade:Make">
+			<MSBuild Targets="Make" Projects="AutoUpgrade.dproj"/>
+		</Target>
+		<Target Name="AutoUpgradeServer">
+			<MSBuild Projects="Server\AutoUpgradeServer.dproj"/>
+		</Target>
+		<Target Name="AutoUpgradeServer:Clean">
+			<MSBuild Targets="Clean" Projects="Server\AutoUpgradeServer.dproj"/>
+		</Target>
+		<Target Name="AutoUpgradeServer:Make">
+			<MSBuild Targets="Make" Projects="Server\AutoUpgradeServer.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="AutoUpgrade;AutoUpgradeServer"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="AutoUpgrade:Clean;AutoUpgradeServer:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="AutoUpgrade:Make;AutoUpgradeServer:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{0AE06DB2-AAC2-4CD7-A12A-FB87F0EF974E}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="ReverseStringServer.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="ReverseStringClient.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="ReverseStringServer">
+			<MSBuild Projects="ReverseStringServer.dproj"/>
+		</Target>
+		<Target Name="ReverseStringServer:Clean">
+			<MSBuild Targets="Clean" Projects="ReverseStringServer.dproj"/>
+		</Target>
+		<Target Name="ReverseStringServer:Make">
+			<MSBuild Targets="Make" Projects="ReverseStringServer.dproj"/>
+		</Target>
+		<Target Name="ReverseStringClient">
+			<MSBuild Projects="ReverseStringClient.dproj"/>
+		</Target>
+		<Target Name="ReverseStringClient:Clean">
+			<MSBuild Targets="Clean" Projects="ReverseStringClient.dproj"/>
+		</Target>
+		<Target Name="ReverseStringClient:Make">
+			<MSBuild Targets="Make" Projects="ReverseStringClient.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="ReverseStringServer;ReverseStringClient"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="ReverseStringServer:Clean;ReverseStringClient:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="ReverseStringServer:Make;ReverseStringClient:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>
